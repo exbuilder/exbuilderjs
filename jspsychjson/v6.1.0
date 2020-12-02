@@ -1,0 +1,145 @@
+{
+	"jspsych-release": "v6.1.0",
+	"plugins": {
+		"jspsych-instructions": {
+			"name": "instructions",
+			"description": "This plugin is for showing instructions to the subject. It allows subjects to navigate through multiple pages of instructions at their own pace, recording how long the subject spends on each page. Navigation can be done using the mouse or keyboard. Subjects can be allowed to navigate forwards and backwards through pages, if desired.",
+			"docs": "https://www.jspsych.org/plugins/jspsych-instructions/",
+			"parameters": [{
+				"name": "type",
+				"type": "string",
+				"default": "instructions",
+				"description": "",
+				"pretty_name": "Type"
+			}, {
+				"name": "pages",
+				"type": "array",
+				"default": ["test", "test"],
+				"description": "Each element in the array is the content for a single page.",
+				"pretty_name": "Pages"
+			}, {
+				"name": "button_label_previous",
+				"type": "string",
+				"default": "Previous",
+				"description": "The text that appears on the button to go backwards",
+				"pretty_name": "Button label previous"
+			}, {
+				"name": "button_label_next",
+				"type": "string",
+				"default": "Next",
+				"description": "The text that appears on the button to go forwards",
+				"pretty_name": "Button label next"
+			}, {
+				"name": "key_forward",
+				"type": "string",
+				"default": "rightarrow",
+				"description": "The key that the subject can press to advance to the next page.",
+				"pretty_name": "Key forward"
+			}, {
+				"name": "key_backward",
+				"type": "string",
+				"default": "leftarrow",
+				"description": "The key that the subject can press to return to the previous page.",
+				"pretty_name": "Key backward"
+			}, {
+				"name": "allow_backward",
+				"type": "boolean",
+				"default": true,
+				"description": "If checked, the subject can return to the previous page of the instructions",
+				"pretty_name": "Allow backward"
+			}, {
+				"name": "allow_keys",
+				"type": "boolean",
+				"default": true,
+				"description": "If checked, the subject can use keyboard keys to navigate the pages.",
+				"pretty_name": "Allow keys"
+			}, {
+				"name": "show_clickable_nav",
+				"type": "boolean",
+				"default": true,
+				"description": "If checked, If checked, then a Previous and Next button will be displayed beneath the instructions.",
+				"pretty_name": "Show clickable nav"
+			}, {
+				"name": "show_page_number",
+				"type": "boolean",
+				"default": false,
+				"description": "If checked, and clickable navigation is enabled, then a Page x/y will be shown before the nave buttons",
+				"pretty_name": "Show page number"
+			}]
+		},
+		"image-button-response": {
+			"name": "jspsych-image-button-response",
+			"description": "This plugin displays an image and records responses generated with a button click. The stimulus can be displayed until a response is given, or for a pre-determined amount of time. The trial can be ended automatically if the subject has failed to respond within a fixed length of time. The button itself can be customized using HTML formatting.",
+			"docs": "https://www.jspsych.org/plugins/jspsych-image-button-response/",
+			"parameters": [{
+				"name": "type",
+				"type": "string",
+				"default": "image-button-response",
+				"description": "",
+				"pretty_name": "Type"
+			}, {
+				"name": "stimulus",
+				"type": "string",
+				"default": "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/0d/aa/cb/0daacb6c-5c70-b080-0baf-2424b1644a4b/source/512x512bb.jpg",
+				"description": "The image to be displayed",
+				"pretty_name": "Stimulus"
+			}, {
+				"name": "stimulus_height",
+				"type": "string",
+				"append": "px",
+				"default": 200,
+				"description": "Set the image height in pixels",
+				"pretty_name": "Image height"
+			}, {
+				"name": "stimulus_width",
+				"type": "string",
+				"append": "px",
+				"default": 200,
+				"description": "Set the image width in pixels",
+				"pretty_name": "Image width"
+			}, {
+				"name": "maintain_aspect_ratio",
+				"type": "boolean",
+				"default": true,
+				"description": "Maintain the aspect ratio after setting width or height",
+				"pretty_name": "Maintain aspect ratio"
+			}, {
+				"name": "prompt",
+				"type": "string",
+				"default": "<p>Is this apple happy or sad?</p>",
+				"description": "Any content here will be displayed under the buttons",
+				"pretty_name": "Prompt"
+			}, {
+				"name": "choices",
+				"type": "array",
+				"default": ["Happy", "Sad"],
+				"description": "An array of labels for the buttons",
+				"pretty_name": "Choices"
+			}, {
+				"name": "button_html",
+				"type": "textarea",
+				"default": "<button class='jspsych-btn'>%choice%</button>",
+				"description": "The html of the button. Usually used to style the button.",
+				"pretty_name": "Button html"
+			}, {
+				"name": "stimulus_duration",
+				"type": "string",
+				"default": null,
+				"description": "How long to hide the stimulus",
+				"pretty_name": "Stimulus duration"
+			}, {
+				"name": "trial_duration",
+				"type": "string",
+				"default": null,
+				"description": "How long to show the trial",
+				"pretty_name": "Trial duration"
+			}, {
+				"name": "response_ends_trial",
+				"type": "boolean",
+				"default": true,
+				"description": "If checked, then trial will end when subject responds",
+				"pretty_name": "Response ends trial"
+			}]
+		}
+	}
+}
