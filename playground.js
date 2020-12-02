@@ -1,4 +1,5 @@
 // javascript to control the playground UI
+// writting by K Schuler on Dec 2 2020
 var s, 
  Playground = {
      settings: {
