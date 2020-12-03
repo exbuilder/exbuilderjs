@@ -4,12 +4,7 @@ var s,
      settings: {
          pluginList: "list of plugins for selected jsPsych release",
          selectedPlugin: "user selected plugin",
-         selectedJsPsychRelease: "selected jsPsych release",
-         buttons: {
-             pluginSelector: $('#pluginSelector'),
-             jsPsychReleaseSelector: $('#jsPsychReleaseSelector'),
-             previewButton: $('#previewButton')
-         },
+         selectedRelease: "user selected jsPsych release",
          form: {
              defaults: "holds the defaults of the curretly selected plugin, used to populate the form",
              userdata: "holds the user input to the form",
@@ -29,12 +24,12 @@ var s,
 
      bindUIActions: function(){
 
-         s.buttons.pluginSelector.on('change', function() {
+        $('#pluginSelector').on('change', function() {
              // get the selected plugin
              var name = $( "#pluginSelector option:selected" ).text();
              s.selectedPlugin = s.pluginList[name];
 
-             document.getElementById("plugin-name").innerHTML =s.selectedPlugin.name;
+             document.getElementById("plugin-name").innerHTML = s.selectedPlugin.name;
              document.getElementById("plugin-description").innerHTML = s.selectedPlugin.description;
              document.getElementById("plugin-docs").href = s.selectedPlugin.docs;
 
@@ -42,7 +37,7 @@ var s,
              Playground.getPluginParams();
          }),
 
-         s.buttons.previewButton.on('click', function(){
+         $('#previewButton').on('click', function(){
 
              // clear the error well and hide it
              $('#warning-well').hide();
@@ -52,15 +47,22 @@ var s,
              Playground.getFormData();
          });
 
+         $('#releaseSelector').on('change', function() {
+
+            // get the selected release and then fetch it's plugins
+            s.selectedRelease = $( "#releaseSelector option:selected" ).text();
+            Playground.fetchPlugins();
+        });
+
      },
 
-     fetchPlugins: function(release){
+     fetchPlugins: function(){
 
          // pass users selected jspsych release to the playground js
          // and then fetch the plugins from github exbuilderjs repo
-        fetch('https://exbuilder.github.io/jspsych-plugins/'+release+'.json')
+        fetch('https://exbuilder.github.io/jspsych-plugins/'+s.selectedRelease+'.json')
             .then(response => response.json())
-            .then(data => { s.pluginList = data.plugins});
+            .then(data => { s.pluginList = data.plugins });
      },
 
      getPluginParams: function() {
@@ -258,7 +260,6 @@ var s,
 
      getJsPsychPreview: function() {
 
-        //  console.log("loading jsPsych preview...", s.form.userdata);
          // pass the trial parametrs to jsPsych and display
          jsPsych.init({
                  timeline: [s.form.userdata],
