@@ -1,2 +1,3 @@
-# exbuilderjs
-the javascript that handles the playground and builder UI in exbuilder
+# plugin-playground
+exbuilder's playground for jsPsych plugins. enjoy!
+
