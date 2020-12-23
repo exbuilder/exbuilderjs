@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Exbuilder's Plugin Playground</title>
+
+    <!-- Scripts -->
+    <script src="playground.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script type="text/javascript" src="assets/js/jspsych/jspsych-6.1.0/jspsych.js"></script>
+    <script type="text/javascript" src="assets/js/jspsych/jspsych-6.1.0/plugins/jspsych-instructions.js') }}"></script>
+    <script type="text/javascript" src="assets/js/jspsych/jspsych-6.1.0/plugins/jspsych-image-button-response.js') }}"></script>
+
+
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" style="text/css" href="assets/js/jspsych/jspsych-6.1.0/css/jspsych.css"/>
+
+
+</head>
+<body>
+    <div id="app">
+      
+        <main class="py-4">
+           
+           <div class="container">
+<div class="row justify-content-center">
+    <div class="col-sm-4">
+            <h4>jsPsych Plugin Playground</h4>
+            <p> Select a plugin and change some of parameter settings to see how it behaves. </p>
+            <div class="input-group" action = >
+                    <select name="releaseSelector" class="custom-select" id="releaseSelector">
+                        <option selected value="">Select a release</option>
+                        <option value="">v6.1.0</option>
+                    </select>
+                </div>
+                <br>
+                <div class="input-group" action = >
+                    <select name="pluginSelector" class="custom-select" id="pluginSelector">
+                        <option selected value="">Select a plugin</option>
+                        @foreach($plugins as $plugin)
+                            <option value="{{$plugin->id}}">{{$plugin->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                
+
+            <hr>
+            <div class="card">
+                <div class="card-header">Parameters</div>
+                <div class="card-body"> 
+                    <form id="parameterForm" novalidate>
+                        <div id="parameter-well"></div>
+                    </form>
+                </div>
+        
+            </div>
+    </div>
+
+    <div class="col-sm-8">
+        <div class="card">
+            <div class = "card-body">
+                <div class="d-flex justify-content-between align-items-center"> 
+                    <h2 id="plugin-name">Plugin name</h2>
+                    <div> 
+                        <a href="#" class="btn btn-sm btn-outline-primary" id="plugin-docs">exbuilder docs</a>
+                        <a href="#" class="btn btn-sm btn-outline-success" id="plugin-docs">jsPsych docs</a>
+                    </div>
+                </div>
+                <p id="plugin-description"> Plugin description</p>
+
+            </div>
+            <div class = "card-body">
+                    <div class= "card">
+                        <div class = "card-body"><div  id="jspsych-target"></div></div>
+                    </div>
+                <hr>
+                <button id="previewButton" type="button" class="btn btn-outline-primary">Preview changes</button>
+                </div>
+            <div class = "card-body">
+                <div id="warning-well" class="alert alert-danger" role="alert">
+                </div>
+</di>
+            </div>
+        </div>
+    </div>
+</div>
+           
+           
+           
+        </main>
+    </div>
+</body>
+
+
+</html>
+
+<script>
+   $( document ).ready(function() {
+        Playground.fetchPlugins('v6.1.0');
+    });
+</script>
